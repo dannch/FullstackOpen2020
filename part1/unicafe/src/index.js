@@ -7,30 +7,30 @@ const App = () => {
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
 
-  const increaseGood=()=>setGood(good +1)
-  const increaseNeutral=()=>setNeutral(neutral +1)
-  const increaseBad=()=>setBad(bad +1)
+  const getSum = () => good+neutral+bad
+  const getAverage = () => getSum()/3
+  const getPercent = () => good/getSum()*100 || 0
 
   return (
     <div>
       <h1>give feedback</h1>
 
-      <button onClick={increaseGood}>
+      <button onClick={()=>setGood(good+1)}>
         good
       </button>
-      <button onClick={increaseNeutral}>
+      <button onClick={()=>setNeutral(neutral+1)}>
         neutral
       </button>
-      <button onClick={increaseBad}>
+      <button onClick={()=>setBad(bad+1)}>
         bad
       </button>
       <h1>statistics</h1>
-      <p>{"good      " + good}</p>
-      <p>{'neutral   ' + neutral}</p>
-      <p>{'bad       ' + bad}</p>
-      <p>{'all       ' + (good+neutral+bad)}</p>
-      <p>{'average   ' + (good+neutral+bad)/3}</p>
-      <p>{'positive  ' + (good)/(good+neutral+bad)*100+'%'}</p>
+      <p>{`good ${good}`}</p>
+      <p>{`neutral ${neutral}`}</p>
+      <p>{`bad ${bad}`}</p>
+      <p>{`all ${getSum()}`}</p>
+      <p>{`average ${getAverage()}`}</p>
+      <p>{`positive ${getPercent()} %`}</p>
     </div>
   )
 }
